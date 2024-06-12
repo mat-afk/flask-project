@@ -1,23 +1,16 @@
 from flask import Flask, render_template
-from slugify import slugify
+from flask_project.domain.produtos import produtos_list
 
-produtos_list = [
-    { "name": "Guaraná", "description": "Melhor refrigerante do mundo" },
-    { "name": "Coca-cola", "description": "Veneno" },
-    { "name": "Pepsi", "description": "Ruim" },
-    { "name": "Água", "description": "Bom" },
-]
-
-app = Flask(__name__, template_folder="./templates")
+app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "<h1>Home</h1>"
+    return render_template("home.html")
 
 
 @app.route("/contato")
 def contato():
-    return "<h1>Contato</h1>"
+    return render_template("contato.html")
 
 
 @app.route("/produtos")
@@ -28,9 +21,9 @@ def produtos():
 @app.route("/produtos/<name>")
 def produto(name):
     for produto in produtos_list:
-        if slugify(produto["name"]) == name:
+        if produto["slug"] == name:
             return render_template("produto.html", produto=produto)
         
-    return "Erro: não existe produto com esse nome"
+    return "Erro: Produto não encontrado"
             
     
