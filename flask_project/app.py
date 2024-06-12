@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from slugify import slugify
 
 produtos_list = [
     { "name": "Guaraná", "description": "Melhor refrigerante do mundo" },
@@ -7,9 +8,7 @@ produtos_list = [
     { "name": "Água", "description": "Bom" },
 ]
 
-
 app = Flask(__name__, template_folder="./templates")
-
 
 @app.route("/")
 def home():
@@ -28,9 +27,8 @@ def produtos():
 
 @app.route("/produtos/<name>")
 def produto(name):
-
     for produto in produtos_list:
-        if produto["name"].lower() == name:
+        if slugify(produto["name"]) == name:
             return render_template("produto.html", produto=produto)
         
     return "Erro: não existe produto com esse nome"
