@@ -9,9 +9,10 @@
 
     {% for produto in produtos %}
         <h2>
-            <a href="/produtos/{{ produto.slug }}">
-                {{ produto.name }}
-            </a>
+            {{ produto.name }}
         </h2>
+        <a href="/produtos/{{ produto.slug }}">
+            Mais detalhes
+        </a>
     {% endfor %}
 {% endblock %}

@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from flask_project.domain.produtos import produtos_list
+from .domain.produtos import produtos as produtos_list
 
 app = Flask(__name__)
 
@@ -26,4 +26,6 @@ def produto(name):
         
     return "Erro: Produto não encontrado"
             
-    
+
+if __name__ == "__main__":
+    app.run()
