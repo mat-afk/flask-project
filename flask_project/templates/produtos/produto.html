@@ -7,4 +7,6 @@
 {% block content %}
     <h1>{{ produto.name }}</h1>
     <p>{{ produto.description }}</p>
+    <p>R$ {{ produto.price }}</p>
+    <img src="{{ produto.image_url }}" alt="{{ produto.name }}">
 {% endblock %}
