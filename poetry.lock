@@ -184,6 +184,16 @@ files = [
 ]
 
 [[package]]
+name = "validate-docbr"
+version = "1.10.0"
+description = "Validate brazilian documents."
+optional = false
+python-versions = "*"
+files = [
+    {file = "validate_docbr-1.10.0-py3-none-any.whl", hash = "sha256:ff016f180b0c5ecff06abce1d83385924438c4d4c7f5c050e90fb724f1d968bb"},
+]
+
+[[package]]
 name = "werkzeug"
 version = "3.0.3"
 description = "The comprehensive WSGI web application library."
@@ -203,4 +213,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "796b23875cc1b168d68a5c5884c0ed40ce7fdcc8809bf6720cea2de772abba28"
+content-hash = "0321f2cf1a5c4f58d9e0992ef0b6bf062545e2ed07c2a50c956203926cc92bf2"

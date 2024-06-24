@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
-from .domain.produtos import produtos as produtos_list, Produto
+from flask_project.domain.produtos import produtos as produtos_list, Produto
+from flask_project.docbr.docs import docs
 
 app = Flask(__name__)
 
@@ -46,5 +47,35 @@ def salvar_produto():
     return redirect(url_for("produtos"))
 
 
+@app.route("/<doc_name>/generate")
+def generate(doc_name):
+    doc = docs[doc_name]
+
+    return render_template(
+        "docbr/generate.html", 
+        doc_name=doc_name.upper(), 
+        docs=docs, 
+        generated=doc.generate(True)
+    )
+
+
+@app.route("/<doc_name>/validate")
+def validate_form(doc_name):
+    return render_template("docbr/validate.html", doc_name=doc_name.upper(), docs=docs)
+
+
+@app.route("/<doc_name>/validate", methods=["POST"])
+def validate(doc_name):
+    doc = docs[doc_name]
+    doc_to_validate = request.form["doc"]
+
+    return render_template(
+        "docbr/validation_result.html", 
+        doc_name=doc_name.upper(), 
+        doc=doc_to_validate, 
+        is_valid=doc.validate(doc_to_validate)
+    )
+
+
 if __name__ == "__main__":
-    app.run()
+    app.run(port=5001)

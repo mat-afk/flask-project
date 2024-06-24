@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+    <nav>
+        <a href="/">Home</a>
+        {% for doc in docs.keys() %}
+            <a href="/{{ doc }}/generate">Gerador de {{ doc.upper() }}</a>
+            <a href="/{{ doc }}/validate">Validar {{ doc.upper()}}</a>
+        {% endfor %}
+    </nav>
+{% endblock %}

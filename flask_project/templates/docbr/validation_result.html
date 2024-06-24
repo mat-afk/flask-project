@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Validar {{ doc_name }}
+{% endblock %}
+
+{% block navbar %}
+    <nav>
+        <a href="/{{ doc_name.lower() }}/validate">Voltar</a>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ doc_name }} {{ "Válido" if is_valid else "Inválido" }}</h1>
+    <p>{{ doc }}</p>
+{% endblock %}

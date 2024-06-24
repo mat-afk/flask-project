@@ -8,11 +8,14 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    {% block navbar %}
     <nav>
         <a href="/">Home</a>
         <a href="/contato">Contato</a>
         <a href="/produtos">Produtos</a>
+        <a href="/cpf/generate">Gerar e Validar CPF/CNPJ</a>
     </nav>
+    {% endblock %}
     
     {% block content %}
     {% endblock %}

@@ -1,0 +1,10 @@
+{% extends "docbr/navbar.html" %}
+
+{% block title %}
+    Gerador de {{ doc_name }}
+{% endblock %}
+
+{% block content %}
+    <h1>Gerador de {{ doc_name }}</h1>
+    <p>{{ doc_name }}: {{ generated }}</p>
+{% endblock %}

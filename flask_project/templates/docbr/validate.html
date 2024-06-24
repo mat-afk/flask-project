@@ -1,0 +1,15 @@
+{% extends "docbr/navbar.html" %}
+
+{% block title %}
+    Validar {{ doc_name }}
+{% endblock %}
+
+{% block content %}
+    <h1>Validar {{ doc_name }}</h1>
+    <div>
+        <form action="/{{ doc_name.lower() }}/validate" method="POST">
+            <input type="text" name="doc" placeholder="Digite aqui o {{ doc_name }}">
+            <button type="submit">Validar</button>
+        </form>
+    </div>
+{% endblock %}

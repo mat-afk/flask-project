@@ -1,6 +1,7 @@
 body {
     background-color: black;
     color: white;
+    padding: 0.5rem;
 }
 
 a {
@@ -9,4 +10,14 @@ a {
 
 img {
     width: 500px;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+nav a {
+    margin-right: 1rem;
 }
