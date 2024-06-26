@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from flask_project.domain.produtos import produtos as produtos_list, Produto
+from flask_project.domain.produtos import list_produtos, save_produto, Produto
 from flask_project.docbr.docs import docs
 
 app = Flask(__name__)
@@ -16,12 +16,12 @@ def contato():
 
 @app.route("/produtos")
 def produtos():
-    return render_template("produtos/produtos.html", produtos=produtos_list)
+    return render_template("produtos/produtos.html", produtos=list_produtos())
 
 
 @app.route("/produtos/<name>")
 def produto(name):
-    for produto in produtos_list:
+    for produto in list_produtos():
         if produto.slug == name:
             return render_template("produtos/produto.html", produto=produto)
         
@@ -40,9 +40,14 @@ def salvar_produto():
     price = request.form["price"]
     image_url = request.form["image_url"]
 
-    produto = Produto(name, description, price, image_url)
-
-    produtos_list.append(produto)
+    save_produto(
+        Produto(
+            name=name,
+            description=description,
+            price=price,
+            image_url=image_url
+        )
+    )
 
     return redirect(url_for("produtos"))
 
